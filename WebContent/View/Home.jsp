@@ -42,12 +42,14 @@
 
 	<div class="home-nav-right">
 		<div class="col-md-6 col-sm-12">
-			<div class="login-register-form">
+			<div class="login-form">
 				<form action="../login" method="POST">
-					<label for="name">Email Id</label> <input type="text" id="emailId"
+				<h1>Login for Instant Banking!</h1>
+					<label for="emailId">Email Id</label> <input type="text" id="emailId"
 						class="form-control" placeholder="Enter Your Email Id"
 						name="emailId" onkeypress="return restrictSpace(event)"
 						onblur="validateEmail()" maxlength="25" required>
+						<br>
 					<div class="form-group">
 						<label for="password">Password</label> <input type="password"
 							class="form-control" placeholder="Enter Password" name="password"

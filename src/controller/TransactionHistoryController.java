@@ -2,7 +2,10 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import java.time.format.DateTimeParseException;
+import java.util.Iterator;
+import java.util.Queue;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,12 +17,11 @@ import javax.servlet.http.HttpSession;
 import model.AccountDAO;
 import model.AccountGetterSetter;
 
-@WebServlet("/withdraw")
-public class WithdrawController extends HttpServlet {
-
+@WebServlet("/transactionHistory")
+public class TransactionHistoryController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	String accountNumber, withdrawalAmount;
-	long minimumBalance = 500;
+	String accountNumber;
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) {
 		doPost(request, response);
 	}
@@ -29,24 +31,17 @@ public class WithdrawController extends HttpServlet {
 			HttpSession session = request.getSession(false);
 			AccountGetterSetter accountGetterSetter = new AccountGetterSetter();
 			accountGetterSetter.setAccountNumber((long) session.getAttribute("accountNumber"));
-			accountGetterSetter.setWithdrawalAmount(Long.parseLong(request.getParameter("withdrawalAmount")));
-			long updatedBalance = AccountDAO.debit(accountGetterSetter);
-			PrintWriter out = response.getWriter();
-			if(updatedBalance == 0) {
-				session.setAttribute("updatedBalance", updatedBalance);
-				request.getRequestDispatcher("View/InvailWithdrawalAmount.jsp").forward(request, response);
-			}		
-			else if( updatedBalance <= minimumBalance) {
-				request.getRequestDispatcher("View/InsufficientBalance.jsp").forward(request, response);
+			Queue<AccountGetterSetter> transactions = AccountDAO.transactionHistory(accountGetterSetter);
+			session.setAttribute("transactions", transactions);
+			if (transactions != null) {
+				//System.out.println("ACCOUNT NUMBER\tDEPOSIT AMOUNT\tWITHDRAWAL AMOUNT\t\tDATE\t\t\tBALANCE");	
+				request.getRequestDispatcher("View/TransactionHistoryResult.jsp").forward(request, response);
 			}
 			else {
-				session.setAttribute("updatedBalance", updatedBalance);
-				request.getRequestDispatcher("View/WithdrawResult.jsp").forward(request, response);
+				request.getRequestDispatcher("View/OperationFailure.jsp").forward(request, response);
 			}
-
 		} catch (DateTimeParseException | IOException | ServletException exception) {
 			exception.printStackTrace();
 		}
-
 	}
 }

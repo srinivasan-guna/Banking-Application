@@ -41,7 +41,15 @@
 	</div>
 
 	<div class="home-nav-right">
-		<h2>Welcome User!</h2>
+		<h2>
+			Welcome
+			<%
+			if (session.getAttribute("userName") != null) {
+				out.println(session.getAttribute("userName"));
+			}
+		%>
+			!
+		</h2>
 		<button type="button" class="btn btn-dark btn-lg operations-button">
 			<a href="${pageContext.request.contextPath}/View/Deposit.jsp"
 				style="color: white;">DEPOSIT MONEY 
@@ -55,6 +63,11 @@
 		<button type="button" class="btn btn-dark btn-lg operations-button">
 			<a href="${pageContext.request.contextPath}/View/CheckBalance.jsp"
 				style="color: white;">CHECK BALANCE 
+		</button>
+		<br>
+		<button type="button" class="btn btn-dark btn-lg operations-button">
+			<a href="${pageContext.request.contextPath}/View/TransferFund.jsp"
+				style="color: white;">TRANSFER MONEY 
 		</button>
 		<br>
 		<button type="button" class="btn btn-dark btn-lg operations-button">

@@ -6,11 +6,10 @@
 <meta charset="utf-8">
 <title>Banking Application</title>
 <meta charset="utf-8">
-<link rel="icon" href="../Images/bank.png">
+<link rel="icon"
+	href="../${pageContext.request.contextPath}/Images/bank.png">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/View/bank.js"></script>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/View/style.css">
 <nav class="navbar navbar-default">
@@ -30,39 +29,44 @@
 </nav>
 </head>
 <body>
+
 	<div class="home-nav-left">
 		<div class="home-nav-left-content">
-			<img alt="bank-logo" src="../Images/bank.png" width="200px"
-				height="200px">
+			<img alt="bank-logo"
+				src="../${pageContext.request.contextPath}/Images/bank.png"
+				width="200px" height="200px">
 			<h2>Everything at your finger tip!</h2>
 		</div>
 	</div>
+
 	<div class="home-nav-right">
+		<br>
 		<h2>
-			Good day,
-			<%
-			if (session.getAttribute("userName") != null) {
-				out.println(session.getAttribute("userName"));
-			}
-		%>
-			!
+			Money transfered successfully<br> to the recipient!
 		</h2>
-		<form action="../withdraw" method="POST">
-
-			<h1>Withdraw Money</h1>
-			<div class="form-group">
-				<label for="name"></label> <input type="text"
-					class="form-control" placeholder="Enter Amount to deposit"
-					name="withdrawalAmount" maxlength="5" id="amount"
-					onkeypress="return restrictCharacters(event)" style="width: 260px;" required>
-			</div>
-			<button type="submit"
-				class="btn btn-dark btn-lg signin-signup-button">
-				<i class="fa fa-sign-in" aria-hidden="true"></i> WITHDRAW
-			</button>
-		</form>
-
+		<br>
+		<button type="button" class="btn btn-dark btn-lg operations-button">
+			<a href="${pageContext.request.contextPath}/View/Deposit.jsp"
+				style="color: white;">DEPOSIT MONEY 
+		</button>
+		<br>
+		<button type="button" class="btn btn-dark btn-lg operations-button">
+			<a href="${pageContext.request.contextPath}/View/Withdraw.jsp"
+				style="color: white;">WITHDRAW MONEY 
+		</button>
+		<br>
+		<button type="button" class="btn btn-dark btn-lg operations-button">
+			<a href="${pageContext.request.contextPath}/View/CheckBalance.jsp"
+				style="color: white;">CHECK BALANCE 
+		</button>
+		<br>
+		<button type="button" class="btn btn-dark btn-lg operations-button">
+			<a
+				href="${pageContext.request.contextPath}/View/TransactionHistory.jsp"
+				style="color: white;">TRANSACTION HISTORY 
+		</button>
 	</div>
+
 	<div class="footer-padding">
 		<div class="footer">
 			<p>Copyright © 2020Bank</p>

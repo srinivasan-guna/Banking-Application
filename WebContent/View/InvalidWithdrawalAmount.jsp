@@ -6,6 +6,7 @@
 <meta charset="utf-8">
 <title>Banking Application</title>
 <meta charset="utf-8">
+<link rel="icon" href="${pageContext.request.contextPath}/Images/bank.png">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet"
@@ -39,7 +40,8 @@
 
 	<div class="home-nav-right">
 		<h2>
-			Minimum balance of Rs.500 <br>must be maintained
+			Withdrawal amount should be greater<br> than 99 and in multiples
+			of 10
 		</h2>
 		<button type="button" class="btn btn-dark btn-lg operations-button">
 			<a href="${pageContext.request.contextPath}/View/Deposit.jsp"

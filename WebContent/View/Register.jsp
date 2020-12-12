@@ -40,7 +40,7 @@
 	<div class="home-nav-right">
 		<div class="col-md-6 col-sm-12">
 
-			<div class="login-register-form">
+			<div class="register-form">
 				<form action="../register" method="POST">
 					<div class="form-group">
 						<label for="name">First Name</label> <input type="text"

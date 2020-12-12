@@ -39,16 +39,24 @@
 		</div>
 	</div>
 	<div class="home-nav-right">
-		<h2>Welcome User!</h2>
-		<br>
+		<h2>
+			Good day,
+			<%
+			if (session.getAttribute("userName") != null) {
+				out.println(session.getAttribute("userName"));
+			}
+		%>
+			!
+		</h2>
 		<form action="../deposit" method="POST">
 
 			<h2>Deposit Money</h2>
 			<div class="form-group">
-				<label for="name">Deposit Amount</label> <input type="text"
-					class="form-control" placeholder="Enter Amount to deposit"
-					name="depositAmount" maxlength="5" id="amount"
-					onkeypress="return restrictCharacters(event)" required>
+				<label for="name"></label> <input type="text" class="form-control"
+					placeholder="Enter Amount to deposit" name="depositAmount"
+					maxlength="5" id="amount"
+					onkeypress="return restrictCharacters(event)" style="width: 260px;"
+					required>
 			</div>
 			<button type="submit"
 				class="btn btn-dark btn-lg signin-signup-button">

@@ -6,6 +6,7 @@
 <meta charset="utf-8">
 <title>Banking Application</title>
 <meta charset="utf-8">
+<link rel="icon" href="${pageContext.request.contextPath}/Images/bank.png">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet"
@@ -36,11 +37,8 @@
 			<h2>Everything at your finger tip!</h2>
 		</div>
 	</div>
-
 	<div class="home-nav-right">
-		<h2>
-			Minimum balance of Rs.500 <br>must be maintained
-		</h2>
+	<h2>The entered user doesn't found<br>Kindly check the account number.</h2>
 		<button type="button" class="btn btn-dark btn-lg operations-button">
 			<a href="${pageContext.request.contextPath}/View/Deposit.jsp"
 				style="color: white;">DEPOSIT MONEY 

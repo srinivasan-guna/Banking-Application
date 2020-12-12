@@ -38,13 +38,16 @@
 		</div>
 	</div>
 	<div class="home-nav-right">
+		<br>
 		<h2>Money withdrawn successfully</h2>
-		<h2>Your account balance:</h2>
-		<%
+		<h2>
+			Your account balance: Rs
+			<%
 			if (session.getAttribute("updatedBalance") != null) {
 				out.println(session.getAttribute("updatedBalance"));
 			}
 		%>
+		</h2>
 		<br>
 		<button type="button" class="btn btn-dark btn-lg operations-button">
 			<a href="${pageContext.request.contextPath}/View/Deposit.jsp"
@@ -56,6 +59,11 @@
 				style="color: white;">CHECK BALANCE 
 		</button>
 		<br>
+		<button type="button" class="btn btn-dark btn-lg operations-button">
+			<a href="${pageContext.request.contextPath}/View/TransferFund.jsp"
+				style="color: white;">TRANSFER MONEY 
+		</button>
+		</br>
 		<button type="button" class="btn btn-dark btn-lg operations-button">
 			<a
 				href="${pageContext.request.contextPath}/View/TransactionHistory.jsp"

@@ -41,6 +41,7 @@ public class RegisterController extends HttpServlet {
 			userGetterSetter.setPassword(request.getParameter("password"));
 			userGetterSetter.setAge(age);
 			long accountNumber = UserDAO.registerUser(userGetterSetter);
+			String userName = UserDAO.getUserName(request.getParameter("emailId"));
 			PrintWriter out = response.getWriter();
 			if (accountNumber == (long) 0) { 
 				request.getRequestDispatcher("View/RegisterationFailure.jsp").forward(request, response);
@@ -49,6 +50,7 @@ public class RegisterController extends HttpServlet {
 				//request.setAttribute("accountNumber",accountNumber);
 				HttpSession session=request.getSession();  
 		        session.setAttribute("accountNumber",accountNumber);
+		        session.setAttribute("userName", userName);
 				request.getRequestDispatcher("View/BankingOperations.jsp").forward(request, response);
 			}
 		}

@@ -27,6 +27,26 @@ public class UserDAO {
 
 		return connection;
 	}
+	
+	public static String getUserName(String emailId) {
+		String userName = null;
+		Connection connection = getConnection();
+		ResultSet resultSet = null;
+		try {
+			Properties properties = new Properties();
+			properties.load(new FileInputStream(
+					"C:\\Users\\srinivasan\\Documents\\Aspire Systems\\Banking Application\\Properties.txt"));
+			CallableStatement callableStatement = connection.prepareCall(properties.getProperty("getUserNameProcedure"));
+			callableStatement.setString(1, emailId);
+			resultSet = callableStatement.executeQuery();
+			resultSet.next();
+			userName = resultSet.getString(1);
+		}
+		catch (SQLException | IOException exception) {
+			exception.printStackTrace();
+		}
+		return userName;
+	}
 
 	public static long getAccountNumber(String emailId) {
 		long accountNumber = 0;

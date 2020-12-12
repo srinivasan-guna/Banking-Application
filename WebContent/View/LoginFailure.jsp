@@ -6,6 +6,7 @@
 <meta charset="utf-8">
 <title>Banking Application</title>
 <meta charset="utf-8">
+<link rel="icon" href="${pageContext.request.contextPath}/Images/bank.png">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script type="text/javascript"
@@ -39,9 +40,9 @@
 		</div>
 	</div>
 	<div class="home-nav-right">
-		<h1>Login failed! Please try again.</h1>
+		<h1>Invalid login credentials!<br> Please try again.</h1>
 		<div class="col-md-6 col-sm-12">
-			<div class="login-register-form">
+			<div class="login-form">
 				<form action="../${pageContext.request.contextPath}/login"
 					method="POST">
 					<label for="name">Email Id</label> <input type="text" id="emailId"

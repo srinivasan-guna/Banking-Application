@@ -6,7 +6,8 @@
 <meta charset="utf-8">
 <title>Banking Application</title>
 <meta charset="utf-8">
-<link rel="icon" href="../${pageContext.request.contextPath}/Images/bank.png">
+<link rel="icon"
+	href="../${pageContext.request.contextPath}/Images/bank.png">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet"
@@ -37,26 +38,37 @@
 		</div>
 	</div>
 	<div class="home-nav-right">
+		<br>
 		<h2>Money deposited successfully</h2>
-		<h2>Your account balance:</h2>
-		<%
+		<h2>
+			Your account balance: Rs
+			<%
 			if (session.getAttribute("updatedBalance") != null) {
 				out.println(session.getAttribute("updatedBalance"));
 			}
 		%>
+		</h2>
 		<br>
 
 		<button type="button" class="btn btn-dark btn-lg operations-button">
-			<a href="${pageContext.request.contextPath}/View/Withdraw.jsp" style="color:white;">WITHDRAW
-				MONEY 
-		</button><br>
+			<a href="${pageContext.request.contextPath}/View/Withdraw.jsp"
+				style="color: white;">WITHDRAW MONEY 
+		</button>
+		<br>
 		<button type="button" class="btn btn-dark btn-lg operations-button">
-			<a href="${pageContext.request.contextPath}/View/CheckBalance.jsp" style="color:white;">CHECK
-				BALANCE 
-		</button><br>
+			<a href="${pageContext.request.contextPath}/View/CheckBalance.jsp"
+				style="color: white;">CHECK BALANCE 
+		</button>
+		<br>
 		<button type="button" class="btn btn-dark btn-lg operations-button">
-			<a href="${pageContext.request.contextPath}/View/TransactionHistory.jsp" style="color:white;">TRANSACTION
-				HISTORY 
+			<a href="${pageContext.request.contextPath}/View/TransferFund.jsp"
+				style="color: white;">TRANSFER MONEY 
+		</button>
+		<br>
+		<button type="button" class="btn btn-dark btn-lg operations-button">
+			<a
+				href="${pageContext.request.contextPath}/View/TransactionHistory.jsp"
+				style="color: white;">TRANSACTION HISTORY 
 		</button>
 	</div>
 

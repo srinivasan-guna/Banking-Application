@@ -33,9 +33,10 @@ public class LoginController extends HttpServlet {
 			PrintWriter out = response.getWriter();
 			HttpSession session=request.getSession();  
 	        long accountNumber = UserDAO.getAccountNumber(request.getParameter("emailId"));
+	        String userName = UserDAO.getUserName(request.getParameter("emailId"));
 	        session.setAttribute("accountNumber", accountNumber);
 			if (status == 1) { 
-
+				session.setAttribute("userName", userName);
 				request.getRequestDispatcher("View/BankingOperations.jsp").forward(request, response);
 			}
 			else {

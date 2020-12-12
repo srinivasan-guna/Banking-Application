@@ -1,8 +1,20 @@
 package model;
 
+import java.sql.Timestamp;
+
 public class AccountGetterSetter {
 	private long balance, depositAmount, withdrawalAmount, rateOfInterest, amount, accountNumber, receiverAccountNumber;
-
+	
+	Timestamp date;
+	
+	public Timestamp getDate() {
+		return date;
+	}
+	
+	public void setDate(Timestamp date) {
+		this.date = date;
+	}
+	
 	public long getBalance() {
 		return balance;
 	}

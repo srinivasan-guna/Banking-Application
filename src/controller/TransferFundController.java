@@ -15,8 +15,8 @@ import javax.servlet.http.HttpSession;
 import model.AccountDAO;
 import model.AccountGetterSetter;
 
-@WebServlet("/MoneyTransferController")
-public class MoneyTransferController extends HttpServlet {
+@WebServlet("/transferFund")
+public class TransferFundController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
@@ -28,14 +28,22 @@ public class MoneyTransferController extends HttpServlet {
 		try {
 			HttpSession session = request.getSession(false);
 			AccountGetterSetter accountGetterSetter = new AccountGetterSetter();
-			accountGetterSetter.setReceiverAccountNumber(Long.parseLong(request.getParameter("depositAmount")));
+
+			accountGetterSetter.setReceiverAccountNumber(Long.parseLong(request.getParameter("receiverAccountNumber")));
 			accountGetterSetter.setDepositAmount(Long.parseLong(request.getParameter("depositAmount")));
 			accountGetterSetter.setAccountNumber((long) session.getAttribute("accountNumber"));
 			PrintWriter out = response.getWriter();
 			int status = AccountDAO.transfer(accountGetterSetter);
-			if (status != 0) {
-				//session.setAttribute("updatedBalance", updatedBalance);
-				//request.getRequestDispatcher("View/DepositResult.jsp").forward(request, response);
+			if (status == -1) {
+				request.getRequestDispatcher("View/TransferFundFailure.jsp").forward(request, response);
+			}  else if (status == 1) {
+				// session.setAttribute("senderBalance", senderBalance);
+				request.getRequestDispatcher("View/TransferFundResult.jsp").forward(request, response);
+			} else if (status == 0) {
+				request.getRequestDispatcher("View/InsufficientBalance.jsp").forward(request, response);
+			}
+			else if (status == -2){
+				request.getRequestDispatcher("View/InvalidWithdrawalAmount.jsp").forward(request, response);
 			}
 		} catch (DateTimeParseException | IOException | ServletException exception) {
 			exception.printStackTrace();

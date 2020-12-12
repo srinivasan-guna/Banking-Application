@@ -9,8 +9,6 @@
 <link rel="icon" href="../Images/bank.png">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/View/bank.js"></script>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/View/style.css">
 <nav class="navbar navbar-default">
@@ -38,31 +36,17 @@
 		</div>
 	</div>
 	<div class="home-nav-right">
-		<h2>
-			Good day,
-			<%
-			if (session.getAttribute("userName") != null) {
-				out.println(session.getAttribute("userName"));
-			}
-		%>
-			!
-		</h2>
-		<form action="../withdraw" method="POST">
+		<br>
+		<form action="../transactionHistory" method="POST">
 
-			<h1>Withdraw Money</h1>
-			<div class="form-group">
-				<label for="name"></label> <input type="text"
-					class="form-control" placeholder="Enter Amount to deposit"
-					name="withdrawalAmount" maxlength="5" id="amount"
-					onkeypress="return restrictCharacters(event)" style="width: 260px;" required>
-			</div>
+			<h2>Get your transaction history<br> with just one click!</h2>
 			<button type="submit"
 				class="btn btn-dark btn-lg signin-signup-button">
-				<i class="fa fa-sign-in" aria-hidden="true"></i> WITHDRAW
+				<i class="fa fa-sign-in" aria-hidden="true"></i> PRINT MINI STATEMENT
 			</button>
 		</form>
-
 	</div>
+
 	<div class="footer-padding">
 		<div class="footer">
 			<p>Copyright © 2020Bank</p>

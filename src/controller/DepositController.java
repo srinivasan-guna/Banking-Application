@@ -31,10 +31,14 @@ public class DepositController extends HttpServlet {
 			accountGetterSetter.setDepositAmount(Long.parseLong(request.getParameter("depositAmount")));
 			accountGetterSetter.setAccountNumber((long) session.getAttribute("accountNumber"));
 			PrintWriter out = response.getWriter();
+			out.println(session.getAttribute("accountNumber"));
 			int updatedBalance = AccountDAO.credit(accountGetterSetter);
 			if( updatedBalance!=0 ) {
-			session.setAttribute("updatedBalance", updatedBalance);
-			request.getRequestDispatcher("View/DepositResult.jsp").forward(request, response);
+				session.setAttribute("updatedBalance", updatedBalance);
+				request.getRequestDispatcher("View/DepositResult.jsp").forward(request, response);
+			}
+			else {
+				request.getRequestDispatcher("View/DepositFailure.jsp").forward(request, response);	
 			}
 		} catch (DateTimeParseException | IOException | ServletException exception) {
 			exception.printStackTrace();

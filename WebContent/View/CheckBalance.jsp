@@ -39,7 +39,14 @@
 		<br>
 		<form action="../balance" method="POST">
 
-			<h2>Your Balance details is<br> just one click away!</h2>
+			<h2>
+				Your Balance details is<br> just one click away,
+				<%
+				if (session.getAttribute("userName") != null) {
+					out.println(session.getAttribute("userName"));
+				}
+			%>!
+			</h2>
 			<button type="submit"
 				class="btn btn-dark btn-lg signin-signup-button">
 				<i class="fa fa-sign-in" aria-hidden="true"></i> CHECK BALANCE

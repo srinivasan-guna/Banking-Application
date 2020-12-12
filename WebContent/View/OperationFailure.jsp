@@ -5,6 +5,7 @@
 <head>
 <meta charset="utf-8">
 <title>Banking Application</title>
+<link rel="icon" href="${pageContext.request.contextPath}/Images/bank.png">
 <meta charset="utf-8">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -37,6 +38,8 @@
 		</div>
 	</div>
 	<div class="home-nav-right">
+
+		<h2>Operation failure!</h2>
 		<button type="button" class="btn btn-dark btn-lg operations-button">
 			<a href="${pageContext.request.contextPath}/View/Deposit.jsp"
 				style="color: white;">DEPOSIT MONEY 
@@ -50,6 +53,11 @@
 		<button type="button" class="btn btn-dark btn-lg operations-button">
 			<a href="${pageContext.request.contextPath}/View/CheckBalance.jsp"
 				style="color: white;">CHECK BALANCE 
+		</button>
+		<br>
+		<button type="button" class="btn btn-dark btn-lg operations-button">
+			<a href="${pageContext.request.contextPath}/View/TransferFund.jsp"
+				style="color: white;">TRANSFER MONEY 
 		</button>
 		<br>
 		<button type="button" class="btn btn-dark btn-lg operations-button">
